@@ -44,3 +44,10 @@ submitBtn.addEventListener("click", (e) => {
       
     .catch((err) => console.log(err));
     })
+
+    let btnClear = document.querySelector("button");
+    let inputFields = document.querySelectorAll("input")
+
+    btnClear.addEventListener("click", () =>{
+        inputFields.forEach(input => input.value = "");
+    })
