@@ -3,7 +3,7 @@
     if (temp > 75 && temp < 90){
         complaint.innerText = "Yes, You Should Complain. You can say 'It's so hot today I'm melting'"
     }else if (temp < 65) {
-        complaint.innerText = "Obviously, it's insane how freezing it is! You can say 'It's too cold today. Maybe I'll build a fire, later?!'"
+        complaint.innerText = "It's insane how freezing it is! Obviously, You can say 'It's too cold today. Maybe I'll build a fire, later?!'"
     }else if(temp >= 90) {
         complaint.innerText = "There is only one way to describe today... OPPRESSIVE! You can complain ALL.DAMN.DAY!"
     }else
