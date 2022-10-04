@@ -12,7 +12,7 @@
 
 
 
-
+const headlines = document.querySelectorAll('.headlines')
 // define the things we need first
 const submitBtn = document.querySelector("button");
 const inputBox = document.querySelector("input");
@@ -29,14 +29,22 @@ submitBtn.addEventListener("click", (e) => {
     fetch (`https://api.openweathermap.org/data/2.5/weather?q=${inputBox.value}&units=imperial&appid=6e86f07e6a527b2d96ba64943b460f2e
     `)
     .then((response) => response.json())
-    .then((data) => {
-        console.log(data)
-        city_name.innerText = "Your Chosen City: " + data.name
-        main_temp.innerText = "The Temp: " + (Math.round(data.main.temp));
-        feels_like.innerText = "And it Feels like: " + (Math.round(data.main.feels_like));
-        description.innerText = "And The Condiditons Outside Are: " + data.weather[0].description;
-        icon.innerHTML= "<a href 'http://openweathermap.org/img/w/${data.weather[0].icon}.png`" ;
-        shouldIcomplain(data.main.temp)
+        .then((data) => {
+            if (data.message === 'city not found') {
+                headlines.forEach((headline) => {
+                    headline.innerHTML = 'Sorry Invalid'
+                    complaint.innerHTML = ''
+            })
+            } else {
+                console.log(data.message)
+                city_name.innerText = "Your Chosen City: " + data.name
+                main_temp.innerText = "The Temp: " + (Math.round(data.main.temp));
+                feels_like.innerText = "And it Feels like: " + (Math.round(data.main.feels_like));
+                description.innerText = "And The Condiditons Outside Are: " + data.weather[0].description;
+                icon.innerHTML= "<a href 'http://openweathermap.org/img/w/${data.weather[0].icon}.png`" ;
+                shouldIcomplain(data.main.temp) 
+        }
+
 
     })
 
